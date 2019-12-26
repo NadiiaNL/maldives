@@ -1,8 +1,308 @@
-@import url('https://fonts.googleapis.com/css?family=Lemonada:700|Open+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lemonada:700|Open+Sans:400,600,700&display=swap');
+@import url('../css/reset.css');
 @import url('../css/fonts.css');
 $primary-font: 'Open Sans', sans-serif;
 $header-font: 'Lemonada', cursive;
 $primary-bg: #fff;
+$primary-color: #fff;
 $menu-bg: #f91c3b;
 $header-bg: #070d1b;
 $scroll-bg: #050a16;
+$color-text: #000;
+$color-body: #282828;
+$sprite-url: '../img/css_sprites.png';
+$texture-header: '../img/texture-dark.png';
+$texture-main: '../img/texture-primary.png';
+$lines-light: '../img/bg-line-light.png';
+$lines-dark: '../img/bg-line-dark.png';
+@mixin sprite($url, $posx, $posy, $width, $height) {
+	background: url($url) $posx $posy;
+	width: $width;
+	height: $height;
+}
+@mixin bg-multiple($bg-color, $texture-url, $lines-url) {
+	background: $bg-color;
+	background-image: url($texture-url), url($lines-url);
+}
+body,
+html {
+	background-color: $color-body;
+}
+:root {
+	font-family: $primary-font;
+	color: $primary-color;
+	font-size: 14px;
+}
+a,
+a:active,
+a:visited,
+a:link {
+	color: $primary-color;
+}
+.intro {
+	position: relative;
+	outline: none;
+	&__inner {
+		@include bg-multiple($header-bg, $texture-header, $lines-light);
+	}
+}
+.wrapper {
+	max-width: 1800px;
+	width: 100%;
+	margin: 0 auto;
+	padding-left: 50px;
+}
+.wrapper-content {
+	max-width: 1747px;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0 auto;
+}
+.header {
+	color: $primary-color;
+	width: 100%;
+	position: relative;
+	padding-top: 50px;
+	z-index: 2;
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__logo {
+		font-size: 40px;
+	}
+	&__menu-icon {
+		@include sprite($sprite-url, -10px, -74px, 30px, 21px);
+	}
+}
+.logo {
+	font-family: $header-font;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: $primary-color;
+}
+.nav {
+	width: 42%;
+	padding: 50px;
+	background-color: $menu-bg;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 10;
+	.social-links__link {
+		font-family: 'icomoon';
+		color: $primary-color;
+		width: 7px;
+		font-size: 23px;
+		margin-right: 30px;
+	}
+}
+.intro-slider.slick-slider {
+	outline: none;
+	width: 100%;
+}
+.intro-slider {
+	margin-top: -30px;
+	&__inner {
+		display: flex;
+		min-height: 975px;
+	}
+	&__title {
+		font-family: $primary-font;
+		color: $menu-bg;
+		padding-left: 90px;
+		border-left: 3px solid $menu-bg;
+		text-transform: uppercase;
+		font-size: 16px;
+		line-height: 1;
+		margin-bottom: 30px;
+		font-weight: 700;
+		letter-spacing: 4px;
+	}
+	&__title-desc {
+		font-family: $header-font;
+		font-size: 62px;
+		line-height: 1.5;
+		margin-bottom: 40px;
+		max-width: 718px;
+		position: relative;
+		z-index: 11;
+	}
+	&__link-more-info {
+		margin-bottom: 30px;
+	}
+}
+.link-more-info {
+	color: $primary-color;
+	font-family: $primary-font;
+	font-size: 12px;
+	text-transform: uppercase;
+	padding-bottom: 20px;
+	align-self: flex-start;
+	border-bottom: 1px solid $primary-color;
+}
+.intro-slider__left-block,
+.intro-slider__right-block {
+	display: flex;
+	flex-direction: column;
+}
+.intro-slider__right-block {
+	width: 38%;
+	margin-left: 90px;
+	@include bg-multiple($primary-bg, $texture-main, $lines-dark);
+	position: relative;
+	.intro-slider__item-img {
+		position: absolute;
+		top: -30px;
+		left: -278px;
+		z-index: 8;
+		width: 760px;
+		height: 890px;
+	}
+	.intro-slider__subtext {
+		color: $color-text;
+		font-weight: 700;
+		transform: rotate(90deg);
+		position: absolute;
+		top: 115px;
+		width: 0;
+		height: 0;
+		right: 120px;
+		letter-spacing: 6px;
+		white-space: nowrap;
+	}
+}
+.intro-slider__status {
+	color: $color-text;
+	font-weight: 600;
+	width: 250px;
+	position: absolute;
+	bottom: 40px;
+	left: 180px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.intro-slider__scroll-down {
+	width: 115px;
+	height: 245px;
+	background-color: $scroll-bg;
+	bottom: 0;
+	right: -1px;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: $primary-color;
+	.intro-slider__scroll-down-text {
+		transform: rotate(90deg);
+		height: 0;
+		width: 0;
+		white-space: nowrap;
+		position: absolute;
+		top: 45px;
+		left: 55%;
+	}
+	.intro-slider__scroll-down-icon {
+		@include sprite($sprite-url, -50px, -115px, 18px, 26px);
+		position: absolute;
+		bottom: 45px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+.intro-slider__left-block {
+	margin-left: auto;
+	justify-content: center;
+	position: relative;
+}
+.intro-slider__item-current {
+	position: relative;
+}
+.intro-slider__current-number {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+	position: absolute;
+	right: 0;
+	bottom: 30px;
+	.intro-slider__current-value {
+		font-size: 40px;
+		font-weight: 700;
+		color: $menu-bg;
+		line-height: 1;
+	}
+	.intro-slider__amount {
+		font-weight: 700;
+	}
+}
+.intro-slider .slick-dots {
+	display: flex;
+	bottom: 45px;
+	right: 260px;
+	position: absolute;
+	& button {
+		border: 0;
+		outline: none;
+		background: transparent;
+		font-size: 0;
+		width: 33.33px;
+		height: 2px;
+		background-color: $color-text;
+	}
+	& .slick-active button {
+		background-color: $menu-bg;
+	}
+}
+
+.slider-preview {
+	position: relative;
+	width: 255px;
+	height: 455px;
+	margin-top: -390px;
+	&__item {
+		width: 255px;
+		height: 455px;
+		background-image: url('../img/header-left-1.jpg');
+		background-size: cover;
+		background-position: center;
+		position: relative;
+	}
+	&__number {
+		color: $menu-bg;
+		font-size: 160px;
+		font-weight: bold;
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+.slider-preview__button {
+	font-family: 'icomoon';
+	color: $primary-color;
+	border: 0;
+	background: transparent;
+	outline: none;
+	width: 50px;
+	height: 22px;
+	font-size: 45px;
+	position: absolute;
+	bottom: 130px;
+	z-index: 10;
+	transition: 0.8s;
+	&:hover {
+		color: $menu-bg;
+	}
+}
+.preview-prev {
+	left: 100px;
+}
+.preview-next {
+	left: 340px;
+}
