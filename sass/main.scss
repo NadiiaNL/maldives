@@ -10,6 +10,9 @@ $header-bg: #070d1b;
 $scroll-bg: #050a16;
 $color-text: #000;
 $color-body: #282828;
+$color-bg-title: #5775bc;
+$color-title: #093868;
+$grey-text: #898e9a;
 $sprite-url: '../img/css_sprites.png';
 $texture-header: '../img/texture-dark.png';
 $texture-main: '../img/texture-primary.png';
@@ -43,6 +46,8 @@ a:link {
 	position: relative;
 	outline: none;
 	&__inner {
+		position: relative;
+		padding-left: 50px;
 		@include bg-multiple($header-bg, $texture-header, $lines-light);
 	}
 }
@@ -50,7 +55,6 @@ a:link {
 	max-width: 1800px;
 	width: 100%;
 	margin: 0 auto;
-	padding-left: 50px;
 }
 .wrapper-content {
 	max-width: 1747px;
@@ -62,7 +66,7 @@ a:link {
 	color: $primary-color;
 	width: 100%;
 	position: relative;
-	padding-top: 50px;
+	padding-top: 2.8vw;
 	z-index: 2;
 	&__inner {
 		display: flex;
@@ -85,7 +89,7 @@ a:link {
 }
 .nav {
 	width: 42%;
-	padding: 50px;
+	padding: 2.8vw;
 	background-color: $menu-bg;
 	display: flex;
 	justify-content: space-between;
@@ -223,21 +227,32 @@ a:link {
 }
 .intro-slider__item-current {
 	position: relative;
+	.intro-slider__bg-title {
+		font-size: 200px;
+		color: rgba($color-bg-title, 0.03);
+		position: absolute;
+		top: 130px;
+		left: -50px;
+		font-family: $header-font;
+		font-weight: bold;
+	}
 }
 .intro-slider__current-number {
-	display: flex;
-	align-items: flex-start;
-	justify-content: flex-end;
 	position: absolute;
 	right: 0;
 	bottom: 30px;
-	.intro-slider__current-value {
+}
+.current-number {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+	.current-value {
 		font-size: 40px;
 		font-weight: 700;
 		color: $menu-bg;
 		line-height: 1;
 	}
-	.intro-slider__amount {
+	.amount {
 		font-weight: 700;
 	}
 }
@@ -261,10 +276,11 @@ a:link {
 }
 
 .slider-preview {
-	position: relative;
+	position: absolute;
 	width: 255px;
 	height: 455px;
-	margin-top: -390px;
+	bottom: -70px;
+
 	&__item {
 		width: 255px;
 		height: 455px;
@@ -272,6 +288,7 @@ a:link {
 		background-size: cover;
 		background-position: center;
 		position: relative;
+		z-index: 2;
 	}
 	&__number {
 		color: $menu-bg;
@@ -305,4 +322,213 @@ a:link {
 }
 .preview-next {
 	left: 340px;
+}
+/*Welcome section*/
+.main-inner {
+	position: relative;
+	@include bg-multiple($primary-color, $texture-main, $lines-dark);
+	background-position-x: -74px;
+}
+.welcome {
+	padding: 7.2vw 20px;
+	&__inner,
+	&__text {
+		display: flex;
+		justify-content: space-between;
+	}
+	&__text {
+		margin-left: -2.2vw;
+		margin-right: -2.2vw;
+		width: 61.5%;
+	}
+	&__text-item {
+		line-height: 26px;
+		color: $grey-text;
+		text-align: justify;
+		margin-left: 2.2vw;
+		margin-right: 2.2vw;
+	}
+}
+.content {
+	max-width: 1110px;
+	margin: 0 auto;
+}
+
+.section-subtitle {
+	font-weight: 700;
+	font-size: 15px;
+	text-transform: uppercase;
+	position: relative;
+	line-height: 30px;
+	border-bottom: 3px solid $menu-bg;
+	text-align: right;
+}
+.section-subtitle--red {
+	color: $menu-bg;
+}
+.welcome__section-subtitle {
+	max-width: 280px;
+	margin-bottom: 30px;
+}
+.section-title {
+	font-size: 36px;
+	line-height: 47px;
+	font-weight: 700;
+}
+.section-title--blue {
+	color: $color-title;
+}
+.welcome__section-title {
+	max-width: 480px;
+	margin-bottom: 4.2vw;
+	margin-left: 95px;
+}
+.welcome__img {
+	background-color: $header-bg;
+	width: 31.5%;
+	position: absolute;
+	top: 0;
+	right: 6.5%;
+	.welcome__photo {
+		width: 100%;
+		height: auto;
+	}
+}
+.best-travel {
+	position: relative;
+	padding: 7.2vw 0px 0px;
+}
+.travel-slider {
+	position: relative;
+	width: 77%;
+}
+/*Best travel beaches*/
+.travel-slider__item {
+	position: relative;
+	padding-bottom: 115px;
+	padding-right: 150px;
+}
+.travel-slider__item.slick-slide {
+	outline: none;
+}
+.travel-slider__photo {
+	width: 100%;
+}
+.travel-slider__card {
+	width: 450px;
+	position: absolute;
+	bottom: 0;
+	left: 60px;
+	z-index: 1001;
+	padding: 30px;
+	background-color: $primary-bg;
+	box-shadow: 0.954px 4.908px 30px 0px rgba($color-text, 0.04);
+	.travel-slider__title {
+		font-size: 22px;
+		font-weight: 700;
+		color: $color-title;
+		line-height: 30px;
+		margin-bottom: 30px;
+		max-width: 292px;
+	}
+	.travel-slider__text-desc {
+		color: $grey-text;
+		line-height: 26px;
+		margin-bottom: 10px;
+	}
+}
+.travel-slider__current-number {
+	max-width: 3.8vw;
+	font-weight: 700;
+	position: absolute;
+	bottom: 50px;
+	left: 90%;
+	.current-value {
+		font-size: 22px;
+	}
+	.amount {
+		color: $grey-text;
+		font-size: 12px;
+	}
+}
+.best-travel__mark {
+	width: 28.1%;
+	height: 23.4vw;
+	background-color: rgba($menu-bg, 1);
+	padding: 25px;
+	position: absolute;
+	top: -150px;
+	right: 0;
+	.best-travel__text {
+		font-size: 24px;
+		letter-spacing: 6px;
+		line-height: 34px;
+		color: $primary-bg;
+		max-width: 127px;
+		text-transform: uppercase;
+		position: absolute;
+		bottom: 25px;
+		left: 25px;
+	}
+}
+.travel-slider__button {
+	color: $grey-text;
+	border: 0;
+	background: transparent;
+	outline: none;
+	width: 50px;
+	height: 35px;
+	font-size: 45px;
+	position: absolute;
+	bottom: 60px;
+	z-index: 10;
+	transition: 0.8s;
+	&:hover {
+		color: $menu-bg;
+	}
+}
+.travel-prev {
+	left: 60%;
+}
+.travel-next {
+	left: 65%;
+}
+@media screen and (max-width: 1024px) {
+	.welcome__text {
+		width: 65%;
+	}
+}
+
+@media screen and (max-width: 968px) {
+	.welcome__text {
+		padding: 7vw;
+		width: 100%;
+	}
+	.welcome__section-title {
+		font-size: 22px;
+		max-width: 250px;
+	}
+	.welcome__img {
+		right: 16.5%;
+	}
+}
+@media screen and (max-width: 768px) {
+	.welcome__text {
+		flex-wrap: wrap;
+		padding: 0;
+		padding-top: 10px;
+		margin: 0;
+	}
+	.welcome__text-item {
+		margin-bottom: 10px;
+	}
+	.welcome__img {
+		right: 20px;
+	}
+	.welcome__section-title {
+		margin-left: 0;
+	}
+	.welcome__section-subtitle {
+		max-width: 182px;
+	}
 }
