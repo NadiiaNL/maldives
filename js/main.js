@@ -30,3 +30,13 @@ $('.travel-slider').slick({
 	nextArrow:
 		'<button type="button" class="travel-slider__button travel-next">&rarr;</button>'
 });
+$('.gallery-slider').slick({
+	infinite: true,
+	slidesToShow: 5,
+	slidesToScroll: 1,
+	arrows: true,
+	prevArrow:
+		'<button type="button" class="gallery-slider__button gallery-prev">&larr;</button>',
+	nextArrow:
+		'<button type="button" class="gallery-slider__button gallery-next">&rarr;</button>'
+});
